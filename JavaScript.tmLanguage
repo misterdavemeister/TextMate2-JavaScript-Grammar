@@ -434,7 +434,7 @@
 			</dict>
 			<dict>
 				<key>begin</key>
-				<string>(?:(?&lt;!\w)\s*)?\b(var)\b(?:\s*)?(?:(?&lt;=[\s\*])([\p{L}\p{Nl}$_][\p{L}\p{Nl}$\p{Mn}\p{Mc}\p{Nd}\p{Pc}\x{200C}\x{200D}]*))?\s*</string>
+				<string>(?:(?:\s*)?\b(var)\b)(?:\s*)?(?:(?&lt;=[\s\*])([\p{L}\p{Nl}$_][\p{L}\p{Nl}$\p{Mn}\p{Mc}\p{Nd}\p{Pc}\x{200C}\x{200D}]*))?\s*|(?&lt;=\,)(?&lt;!^\;\:\{)(\s*)</string>
 				<key>beginCaptures</key>
 				<dict>
 					<key>1</key>
@@ -449,9 +449,9 @@
 					</dict>
 				</dict>
 				<key>comment</key>
-				<string>Recognize variables set by the "var" keyword as variables, even separated by commas</string>
+				<string>Recognize variables set by the "var" keyword as variables, including those separated by commas</string>
 				<key>end</key>
-				<string>(\;)</string>
+				<string>(\,|\;|\{|\=|\:)</string>
 				<key>patterns</key>
 				<array>
 					<dict>
@@ -656,7 +656,7 @@
 					<key>comment</key>
 					<string>Variables separated by commas optional</string>
 					<key>end</key>
-					<string>(?=[,;=])</string>
+					<string>(?=[,;={:])</string>
 					<key>patterns</key>
 					<array>
 						<dict>
